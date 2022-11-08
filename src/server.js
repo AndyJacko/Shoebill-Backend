@@ -1,4 +1,4 @@
-require("./db/connection")
+require("./db/conn")
 
 const cors = require("cors")
 const express = require("express")
