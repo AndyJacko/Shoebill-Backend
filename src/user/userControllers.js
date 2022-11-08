@@ -1,4 +1,4 @@
-const User = require('/userMovel');
+const User = require('./userModel');
 
 const jwt = require("jsonwebtoken")
 
