@@ -55,7 +55,7 @@ exports.loginUser = async (req, res) => {
                 req.body.username,
                 req.body.password
             )
-            const token = await jwt.sign({_id: user._id}, process.env.SECRET)
+            const token = await jwt.sign({_id: user._id}, process.env.JWT_KEY)
             res.status(200).send({username: user.username, token, text: "Successfuly logged in"})
         }
     }
