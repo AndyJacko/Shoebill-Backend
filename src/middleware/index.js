@@ -17,7 +17,7 @@ exports.tokenCheck = async (req, res, next) => {
     try {
         if (req.header("Authorization")) {
             const token = req.header("Authorization").replace("Bearer ", "")
-            const decodedToken = await jwt.verify(token, process.env.SECRET)
+            const decodedToken = await jwt.verify(token, process.env.JWT_KEY)
             console.log(decodedToken)
             const user = await User.findById(decodedToken._id)
             req.user = user
