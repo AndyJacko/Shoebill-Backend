@@ -4,8 +4,15 @@ const User = require("../user/userModel")
 exports.createPost = async (req, res) => {
     try {
         const newPost = await Post.create(req.body);
-        await User.updateOne({_id: newPost.user}, {$push: {posts: newPost._id}})
-        res.status(201).send({user: newPost.user});
+        await User.updateOne(
+            { _id: newPost.user },
+             {
+              $push: {
+              posts: newPost._id,
+               },
+             }
+            );
+            res.status(201).send({ message: "Post Created", post: newPost });
     } catch (error){
         console.log(error)
         res.status(500).send({error: error.message})

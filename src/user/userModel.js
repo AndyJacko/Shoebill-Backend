@@ -1,7 +1,9 @@
 const mongoose = require("mongoose")
 const bcrypt = require("bcrypt")
 
-const userSchema = new mongoose.Schema({
+const Schema = mongoose.Schema;
+
+const userSchema = new Schema({
     username: {
         type: String,
         required: true,
@@ -19,7 +21,6 @@ const userSchema = new mongoose.Schema({
     },
     realname: {
         type: String,
-        required: true
     },
     profilepic: {
         type: String,
@@ -27,7 +28,7 @@ const userSchema = new mongoose.Schema({
     },
     birthdate: {
         type: Date,
-        required: true,
+        
         // No space?
     },
     joindate: {
@@ -37,15 +38,17 @@ const userSchema = new mongoose.Schema({
     },
     bio: {
         type: String,
-        required: true
+        
     },
     following: {
         type: Number,
+        default: Math.ceil(Math.random()*1000)
         // ?,
         // No space?
     },
     followers: {
         type: Number,
+        default: Math.ceil(Math.random()*1000)
         // ?,
         // No space?
     },
@@ -58,7 +61,7 @@ const userSchema = new mongoose.Schema({
         link: true
     },
     posts: [{
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Post"
     }]
 })
