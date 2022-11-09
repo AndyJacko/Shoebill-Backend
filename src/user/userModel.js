@@ -21,6 +21,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    profilepic: {
+        type: String,
+        // No space?
+    },
     joindate: {
         type: Date,
         default: Date.now,
