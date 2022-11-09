@@ -1,8 +1,10 @@
 const Post = require("./postModel")
+const User = require("../user/userModel")
 
 exports.createPost = async (req, res) => {
     try {
         const newPost = await Post.create(req.body);
+        await User.updateOne({_id: newPost.user}, {$push: {posts: newPost._id}})
         res.status(201).send({user: newPost.user});
     } catch (error){
         console.log(error)
@@ -13,6 +15,7 @@ exports.createPost = async (req, res) => {
 exports.readPost = async (req, res) => {
     try {
         const posts = await Post.find({})
+        await Post.populate(posts, {path: "user"})
         res.status(200).send({user: posts})
     } catch (error) {
         console.log(error)
