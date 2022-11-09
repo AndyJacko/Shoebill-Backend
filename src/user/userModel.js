@@ -25,10 +25,19 @@ const userSchema = new mongoose.Schema({
         type: String,
         // No space?
     },
+    birthdate: {
+        type: Date,
+        required: true,
+        // No space?
+    },
     joindate: {
         type: Date,
         default: Date.now,
         // No space?
+    },
+    bio: {
+        type: String,
+        required: true
     },
     following: {
         type: Number,
