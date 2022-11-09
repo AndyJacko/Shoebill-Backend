@@ -1,10 +1,16 @@
 const mongoose = require("mongoose")
 
-const postSchema = new mongoose.Schema({
-    user: {
-        type: Schema.Types.ObjectId,
-        ref: "User"
-    },
+const Schema = mongoose.Schema;
+
+const postSchema = new Schema({
+    user: { type: Schema.Types.ObjectId, ref: "User" },
+    // user: {
+    //     // type: mongoose.Schema.Types.ObjectId,
+    //     type: String,
+    //     required: true,
+    //     ref: "User"
+        
+    // },
     postcomment: {
         type: String,
         required: true,
@@ -18,12 +24,15 @@ const postSchema = new mongoose.Schema({
     },
     likes: {
         type: Number,
+        default: Math.ceil(Math.random()*1000)
     },
     rebarks: {
         type: Number,
+        default: Math.ceil(Math.random()*1000)
     },
     numcomments: {
         type: Number,
+        default: Math.ceil(Math.random()*1000)
     }
 })
 
