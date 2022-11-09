@@ -21,6 +21,10 @@ const userSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
         // No space?
+    },
+    following: {
+        type: Number,
+        // ?
     }
 })
 
