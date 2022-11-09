@@ -16,6 +16,26 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    joindate: {
+        type: Date,
+        default: Date.now,
+        // No space?
+    },
+    following: {
+        type: Number,
+        // ?,
+        // No space?
+    },
+    followers: {
+        type: Number,
+        // ?,
+        // No space?
+    },
+    replies: {
+        type: String,
+        date: Date,
+        // ?
     }
 })
 
