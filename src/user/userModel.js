@@ -57,6 +57,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         link: true
     },
+    posts: [{
+        type: Schema.Types.ObjectId,
+        ref: "Post"
+    }]
 })
 
 userSchema.statics.findByCredentials = async (username, password) => {
@@ -68,6 +72,6 @@ userSchema.statics.findByCredentials = async (username, password) => {
     }
 }
 
-const User = mongoose.model("user", userSchema)
+const User = mongoose.model("User", userSchema)
 
 module.exports = User
