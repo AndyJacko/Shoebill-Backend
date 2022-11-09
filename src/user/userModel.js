@@ -36,7 +36,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         date: Date,
         // ?
-    }
+    },
+    location: {
+        type: String,
+        // ?
+    },
 })
 
 userSchema.statics.findByCredentials = async (username, password) => {
