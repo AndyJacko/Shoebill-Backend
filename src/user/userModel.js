@@ -24,6 +24,17 @@ const userSchema = new mongoose.Schema({
     },
     following: {
         type: Number,
+        // ?,
+        // No space?
+    },
+    followers: {
+        type: Number,
+        // ?,
+        // No space?
+    },
+    replies: {
+        type: String,
+        date: Date,
         // ?
     }
 })
