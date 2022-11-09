@@ -2,9 +2,8 @@ const mongoose = require("mongoose")
 
 const postSchema = new mongoose.Schema({
     user: {
-        type: String,
-        required: true,
-        unique: true
+        type: Schema.Types.ObjectId,
+        ref: "User"
     },
     postcomment: {
         type: String,
