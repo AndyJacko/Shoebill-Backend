@@ -49,11 +49,6 @@ const userSchema = new mongoose.Schema({
         // ?,
         // No space?
     },
-    replies: {
-        type: String,
-        date: Date,
-        // ?
-    },
     location: {
         type: String,
         // ?
