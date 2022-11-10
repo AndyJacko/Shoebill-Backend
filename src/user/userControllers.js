@@ -44,7 +44,7 @@ exports.readUserOne = async (req, res) => {
     const user = await User.findOne({_id: req.params.id});
     await Post.populate(user, { path: "posts" });
     res.status(200).send({user: user})
-  } catch (error){
+  } catch (error) {
     console.log(error)
     res.status(500).send({error: error.message})
   }
