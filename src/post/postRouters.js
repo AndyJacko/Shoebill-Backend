@@ -9,3 +9,4 @@ postRouter.put("/updatePost", updatePost);
 postRouter.delete("/deletePost", deletePost);
 
 module.exports = postRouter
+
