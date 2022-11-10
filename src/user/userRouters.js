@@ -6,6 +6,7 @@ const {
   deleteUser,
   loginUser,
   readRandomUsers,
+  readUserOne,
 } = require("./userControllers");
 
 const { hashPass, tokenCheck, comparePass } = require("../middleware/");
@@ -18,5 +19,7 @@ userRouter.post("/createUser", hashPass, createUser);
 userRouter.post("/loginUser", tokenCheck, loginUser);
 userRouter.put("/updateUser", updateUser);
 userRouter.delete("/deleteUser", deleteUser);
+
+userRouter.get("/readUserOne/:id", readUserOne);
 
 module.exports = userRouter;

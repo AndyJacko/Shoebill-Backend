@@ -1,5 +1,6 @@
 const User = require("./userModel");
 const jwt = require("jsonwebtoken");
+const Post = require("../post/postModel")
 
 exports.createUser = async (req, res) => {
   try {
@@ -37,6 +38,17 @@ exports.readRandomUsers = async (req, res) => {
     res.status(500).send({ error: err.message });
   }
 };
+
+exports.readUserOne = async (req, res) => {
+  try{
+    const user = await User.findOne({_id: req.params.id});
+    await Post.populate(user, { path: "posts" });
+    res.status(200).send({user: user})
+  } catch (error){
+    console.log(error)
+    res.status(500).send({error: error.message})
+  }
+}
 
 exports.updateUser = async (req, res) => {
   try {
