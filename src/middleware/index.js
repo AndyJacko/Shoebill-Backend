@@ -46,3 +46,4 @@ exports.comparePass = async (request, response, next) => {
         response.status(500).send({error: error.message})
     }
 }
+
