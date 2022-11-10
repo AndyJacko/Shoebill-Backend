@@ -34,7 +34,7 @@ exports.tokenCheck = async (req, res, next) => {
 
 exports.comparePass = async (request, response, next) => {
     try {
-        request.user = await User.findOne({username: request.body.username});
+        request.user = await User.findOne({username: request.body.username})
         if (request.user &&
             await bcrypt.compare(request.body.password, request.user.password)) {
                 next ()
