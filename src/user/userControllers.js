@@ -85,9 +85,10 @@ exports.loginUser = async (req, res) => {
       );
       const token = await jwt.sign({ _id: user._id }, process.env.JWT_KEY);
       res.status(200).send({
-        username: user.username,
+        user: user,
         token,
         text: "Successfuly logged in",
+        
       });
     }
   } catch (error) {
