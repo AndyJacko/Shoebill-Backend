@@ -46,7 +46,12 @@ exports.updatePost = async (req, res) => {
 exports.deletePost = async (req, res) => {
   console.log(req.params);
   try {
-    await Post.deleteOne({ user: req.body.user });
+    await Post.deleteOne({_id: req.params.id});
+    await User.updateOne({_id: req.body.userId}, {
+      $pullAll: {
+          posts: [req.params.id]
+      },
+  });
     res.status(200).send({ message: "successfully deleted a Post" })
   } catch (error) {
     console.log(error);
