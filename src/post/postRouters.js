@@ -6,7 +6,7 @@ const postRouter = Router()
 postRouter.get("/readPost", readPost);
 postRouter.post("/createPost", createPost);
 postRouter.put("/updatePost", updatePost);
-postRouter.delete("/deletePost", deletePost);
+postRouter.delete("/deletePost/:id", deletePost);
 
 module.exports = postRouter
 
