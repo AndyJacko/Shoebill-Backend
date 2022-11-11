@@ -33,7 +33,7 @@ exports.readPost = async (req, res) => {
 exports.updatePost = async (req, res) => {
   try {
     await Post.updateOne(
-      { user: req.body.user },
+      { _id: req.body.userId },
       { [req.body.key]: req.body.value }
     );
     res.status(200).send({ message: "successfully update a Post" })
