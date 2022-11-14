@@ -21,7 +21,7 @@ exports.createPost = async (req, res) => {
 
 exports.readPost = async (req, res) => {
   try {
-    const posts = await Post.find({});
+    const posts = await Post.find({}).sort({ posteddate: -1 });
     await Post.populate(posts, { path: "user" })
     res.status(200).send({ user: posts })
   } catch (error) {
