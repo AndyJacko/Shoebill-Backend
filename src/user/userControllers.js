@@ -72,6 +72,7 @@ exports.updateUser = async (req, res) => {
 exports.deleteUser = async (req, res) => {
   try {
     await User.deleteOne({ _id: req.params.id });
+    await Post.deleteMany({ user: req.params.id });
     res.status(200).send({ message: "successfully deleted a user" });
   } catch (error) {
     console.log(error);
