@@ -53,8 +53,8 @@ exports.readUserOne = async (req, res) => {
 exports.updateUser = async (req, res) => {
   try {
     await User.updateOne(
-      { username: req.body.username },
-      { [req.body.key]: req.body.value }
+      { _id: req.body.id },
+      req.body
     );
     res.status(200).send({ message: "successfully update a user" });
   } catch (error) {
