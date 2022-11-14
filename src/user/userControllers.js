@@ -1,6 +1,7 @@
 const User = require("./userModel");
 const jwt = require("jsonwebtoken");
 const Post = require("../post/postModel")
+const bcrypt = require ("bcrypt")
 
 exports.createUser = async (req, res) => {
   try {
@@ -51,15 +52,20 @@ exports.readUserOne = async (req, res) => {
 }
 
 exports.updateUser = async (req, res) => {
+  if (req.body.password && req.body.password.trim() !== "") {
+    const hash = await bcrypt.hash(req.body.password, 8)
+    req.body.password = hash
+  }
+  
   try {
     await User.updateOne(
-      { _id: req.body.id },
+      {_id: req.body.id},
       req.body
-    );
-    res.status(200).send({ message: "successfully update a user" });
+    )
+    res.status(200).send({message: "Successfully updated user."})
   } catch (error) {
-    console.log(error);
-    res.status(500).send({ error: error.message });
+    console.log(error)
+    res.status(500).send({error: error.message})
   }
 };
 
