@@ -10,7 +10,7 @@ userRouter.get("/readUser/:limit", readRandomUsers);
 userRouter.post("/createUser", hashPass, createUser);
 userRouter.post("/loginUser", tokenCheck, loginUser);
 userRouter.put("/updateUser", updateUser);
-userRouter.delete("/deleteUser", deleteUser);
+userRouter.delete("/deleteUser/:id", deleteUser);
 
 userRouter.get("/readUserOne/:id", readUserOne);
 

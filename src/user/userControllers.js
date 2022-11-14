@@ -7,7 +7,7 @@ exports.createUser = async (req, res) => {
   try {
     const newUser = await User.create(req.body);
     const token = await jwt.sign({ _id: newUser._id }, process.env.JWT_KEY);
-    res.status(201).send({ username: newUser.username, token });
+    res.status(201).send({ user: newUser, token });
   } catch (error) {
     console.log(error);
     res.status(500).send({ error: error.message });
@@ -70,9 +70,8 @@ exports.updateUser = async (req, res) => {
 };
 
 exports.deleteUser = async (req, res) => {
-  console.log(req.params);
   try {
-    await User.deleteOne({ username: req.body.username });
+    await User.deleteOne({ _id: req.params.id });
     res.status(200).send({ message: "successfully deleted a user" });
   } catch (error) {
     console.log(error);
