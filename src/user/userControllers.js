@@ -43,7 +43,7 @@ exports.readRandomUsers = async (req, res) => {
 exports.readUserOne = async (req, res) => {
   try{
     const user = await User.findOne({_id: req.params.id});
-    await Post.populate(user, { path: "posts" });
+    await Post.populate(user, { path: "posts", options: {sort:{posteddate: -1}}});
     res.status(200).send({user: user})
   } catch (error) {
     console.log(error)
