@@ -7,6 +7,7 @@ const postSchema = new Schema({
   postcomment: { type: String, required: true },
   postpic: { type: String },
   posteddate: { type: Date, default: Date.now },
+  likeCount: 0,
   likes: { type: Number, default: Math.ceil(Math.random() * 1000) },
   rebarks: { type: Number, default: Math.ceil(Math.random() * 1000) },
   numcomments: { type: Number, default: Math.ceil(Math.random() * 1000) },

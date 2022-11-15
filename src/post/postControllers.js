@@ -59,3 +59,20 @@ exports.deletePost = async (req, res) => {
   }
 };
 
+exports.updateLike = async (req, res) => {
+  try {
+    await Post.updateOne(
+      {_id: req.params.id},
+      {
+        $inc: {
+          likes: 1
+        }, 
+        $pull: {
+          likes : req.body.likes
+        }});
+      res.status(200).send({message: "successfully like is there"})
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error: error.message });
+  }
+};
